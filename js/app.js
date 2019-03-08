@@ -2,11 +2,11 @@ $(document).ready(function(){
   let displayStorage='';
   let num=''
   let inputs=[];
-  let add=0;
-  let subtract=0;
+  //let add=0;
+  /*let subtract=0;
   let multi=0;
-  let divide=0;
-
+  let divide=0;*/
+  let operArr=[];
   $('.card').on('click',function(){
 
     num=$(this).text()
@@ -15,7 +15,7 @@ $(document).ready(function(){
     $('#display').append(num);
     displayStorage=displayStorage+num;
 
-    console.log(displayStorage);
+    //console.log(displayStorage);
     /*if(num=='='){
       console.log("START Calculator")
     }*/
@@ -28,11 +28,13 @@ $(document).ready(function(){
       document.getElementById('display').innerHTML=""
     }
     if (num=='+' || num=='-'|| num=='*' || num=='/'){
+      operArr.push(displayStorage[displayStorage.length-1]);
       inputs.push(parseFloat(displayStorage.slice(0,-1)))
       displayStorage=''
-      console.log(inputs);
+      //console.log(inputs);
+      //console.log(operArr)
       document.getElementById('display').innerHTML="";
-      if (num=='+'){
+      /*if (num=='+'){
         add+=1;
       }
       else if (num=='-'){
@@ -43,9 +45,61 @@ $(document).ready(function(){
       }
       else {
         divide+=1;
-      }
+      }*/
 
     }
+
+    if(num=='='){
+      inputs.push(parseFloat(displayStorage.slice(0,-1)))
+      let total=inputs[0];
+      for (let i=0;i<operArr.length;i++){
+        if(operArr[i]=='+'){
+          console.log(inputs)
+          total=total+inputs[i+1]
+          document.getElementById('display').innerHTML=total
+          //delete inputs[0];
+
+          console.log(inputs)
+          console.log(total)
+        }
+        else if(operArr[i]=='-'){
+          console.log(inputs)
+          total=total-inputs[i+1]
+          document.getElementById('display').innerHTML=total
+          //delete inputs[0];
+
+          console.log(inputs)
+          console.log(total)
+        }
+
+        else if(operArr[i]=='*'){
+          console.log(inputs)
+          total=total*inputs[i+1]
+          document.getElementById('display').innerHTML=total
+          //delete inputs[0];
+
+          console.log(inputs)
+          console.log(total)
+        }
+
+        else if(operArr[i]=='/'){
+          console.log(inputs)
+          if(inputs[i+1]==0){
+            console.error("STOPS");
+            document.getElementById('display').innerHTML='UNDEFINED'
+          }else{
+            total=total/inputs[i+1]
+            document.getElementById('display').innerHTML=total
+            //delete inputs[0];
+
+            console.log(inputs)
+            console.log(total)
+          }
+
+        }
+      }
+    }
+    /*
     if(num=='='&& add>=1){
       inputs.push(parseFloat(displayStorage.slice(0,-1)))
       console.log(inputs)
@@ -80,41 +134,42 @@ $(document).ready(function(){
         //inputs=[];
 
     }
-  })
+  })*/
 
 
 })
-
+})
 function validateNumber(number) {
   return /^-?[1-9][0-9]*(.[0-9]+)?$/.test(parseFloat(number));
 }
 
-function add(numbers){
-  return numbers.reduce(function(total,num){
-    return total+num
-  })
+function add(number1,number2){
+  return number1+number2;
+
 }
 
-function subtract(numbers){
-  return numbers.reduce(function(total,num){
-    return total-num
-  })
+function subtract(number1,number2){
+  return number1-number2;
 }
 
-function multiple(numbers){
-  return numbers.reduce(function(total,num){
-    return total*num
-  })
+function multiple(number1,number2){
+  return number1*number2;
 }
 
-function divide(numbers){
-  return numbers.reduce(function(total,num){
-    return total/num
-  })
-}
+function divide(number1,number2){
 
+    if (number2==0){
+      return "ERROR!!"
+      } else{
+          return number1/number2
+      }
+
+  }
+
+/*
 console.log(add([1,2,5,10]).toFixed(4));
 console.log(subtract([10,2,2]).toFixed(4));
 console.log(multiple([10,10,10]).toFixed(4));
 console.log(divide([10,2,2]).toFixed(4));
 console.log(validateNumber('0.1'))
+*/
