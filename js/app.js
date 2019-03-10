@@ -2,10 +2,7 @@ $(document).ready(function(){
   let displayStorage='';
   let num=''
   let inputs=[];
-  //let add=0;
-  /*let subtract=0;
-  let multi=0;
-  let divide=0;*/
+
   let operArr=[];
   $('.card').on('click',function(){
 
@@ -16,38 +13,27 @@ $(document).ready(function(){
     displayStorage=displayStorage+num;
 
     //console.log(displayStorage);
-    /*if(num=='='){
-      console.log("START Calculator")
-    }*/
-    if (displayStorage.length==2 && displayStorage[0]=="0" && displayStorage[1]!="."){
-      console.log("Do you not know how math works")
-    }
+
     if (num=='Clear'){
       displayStorage='';
       inputs=[];
+      operArr=[];
+      console.log(inputs)
       document.getElementById('display').innerHTML=""
     }
     if (num=='+' || num=='-'|| num=='*' || num=='/'){
+
+        $('#status').hide();
+
       operArr.push(displayStorage[displayStorage.length-1]);
       inputs.push(parseFloat(displayStorage.slice(0,-1)))
       displayStorage=''
       //console.log(inputs);
       //console.log(operArr)
       document.getElementById('display').innerHTML="";
-      /*if (num=='+'){
-        add+=1;
-      }
-      else if (num=='-'){
-        subtract+=1;
-      }
-      else if (num=='*'){
-        multi+=1;
-      }
-      else {
-        divide+=1;
-      }*/
 
     }
+
 
     if(num=='='){
       inputs.push(parseFloat(displayStorage.slice(0,-1)))
@@ -99,6 +85,10 @@ $(document).ready(function(){
         }
       }
     }
+
+
+
+
     /*
     if(num=='='&& add>=1){
       inputs.push(parseFloat(displayStorage.slice(0,-1)))
@@ -140,7 +130,7 @@ $(document).ready(function(){
 })
 })
 function validateNumber(number) {
-  return /^-?[1-9][0-9]*(.[0-9]+)?$/.test(parseFloat(number));
+  return (typeof parseFloat(number)==='number');
 }
 
 function add(number1,number2){
@@ -170,6 +160,6 @@ function divide(number1,number2){
 console.log(add([1,2,5,10]).toFixed(4));
 console.log(subtract([10,2,2]).toFixed(4));
 console.log(multiple([10,10,10]).toFixed(4));
-console.log(divide([10,2,2]).toFixed(4));
-console.log(validateNumber('0.1'))
-*/
+console.log(divide([10,2,2]).toFixed(4*/
+
+console.log(validateNumber('1.00'));

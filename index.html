@@ -16,41 +16,78 @@
   <script type="text/javascript" src="./js/app.js"></script>
 </head>
 <body>
-  <header></header>
-  <nav></nav>
+  <header>Javascript Calculator</header>
   <main>
 
-    <div class='container'>
-      <div class='display'>
-        <div class='card' id='display'></div>
-      </div>
-      <div class='grid-container'>
 
+      <!--<div class='display'>
+        <div class='card' id='display'></div>
+      </div>-->
+
+      <div class='grid-container'>
+        <!-- Row 1 -
+        <div class='card' id='clear'>Clear</div>
+        <div class='card' id='divide'>/</div>
+        <!-- Row 2 -
         <div class='card' id='seven'>7</div>
         <div class='card' id='eight'>8</div>
         <div class='card' id='nine'>9</div>
-        <div class='card' id='divide'>/</div>
+        <div class='card' id='multiple'>*</div>
+        <!-- Row 3 ->
         <div class='card' id='four'>4</div>
         <div class='card' id='five'>5</div>
         <div class='card' id='six'>6</div>
-        <div class='card' id='multiple'>*</div>
+        <div class='card' id='subtract'>-</div>
+        <!-- Row 4 --
         <div class='card' id='one'>1</div>
         <div class='card' id='two'>2</div>
         <div class='card' id='three'>3</div>
-        <div class='card' id='subtract'>-</div>
+        <div class='card' id='add'>+</div>
+        <!-- Row 5 --
         <div class='card' id='0'>0</div>
         <div class='card' id='decimal'>.</div>
         <div class='card' id='equals'>=</div>
-        <div class='card' id='add'>+</div>
-
+      -->
+        <table cellspacing="10">
+          <tr>
+            <th class='card' id='display' colspan='4'></th>
+          </tr>
+          <tr>
+            <td class='card' id='clear' colspan='3'>Clear</td>
+            <td class='card' id='divide'>/</td>
+          </tr>
+          <tr>
+            <td class='card' id='seven'>7</td>
+            <td class='card' id='eight'>8</td>
+            <td class='card' id='nine'>9</td>
+            <td div class='card' id='multiple'>*</td>
+          </tr>
+          <tr>
+            <td class='card' id='four'>4</td>
+            <td class='card' id='five'>5</td>
+            <td class='card' id='six'>6</td>
+            <td class='card' id='subtract'>-</td>
+          </tr>
+          <tr>
+            <td class='card' id='one'>1</td>
+            <td class='card' id='two'>2</td>
+            <td class='card' id='three'>3</td>
+            <td class='card' id='add'>+</td>
+          </tr>
+          <tr>
+            <td class='card' id='0' colspan='2'>0</td>
+            <td class='card' id='decimal'>.</td>
+            <td class='card' id='equals'>=</td>
+          </tr>
+        </table>
       </div>
-      <div class='clear'>
+      <!--<div class='clear'>
         <div class='card' id='clear'>Clear</div>
-      </div>
+      </div>-->
 
-    </div>
-    <section></section>
-    <footer></footer>
+    
+
+    <footer>&copy; Created by Dan Shelnut</footer>
   </main>
 </body>
 </html>
