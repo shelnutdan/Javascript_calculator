@@ -2,11 +2,22 @@ $(document).ready(function(){
   let displayStorage='';
   let num=''
   let inputs=[];
-
+  let decimalCounter=0;
   let operArr=[];
-  $('.card').on('click',function(){
-
+  $('.clear-card').on('click',function(){
+    num=''
+    displayStorage='';
+    inputs=[];
+    operArr=[];
+    decimalCounter=0;
+    console.log(inputs)
+    document.getElementById('display').innerHTML=""
+    $('.card').removeAttr('disabled');
+  })
+  $('.card').on('click',function (){
+    //$('#decimal').on('click',console.log("start"));
     num=$(this).text()
+
     console.log(num)
     //document.getElementById('display').innerHTML=num;
     $('#display').append(num);
@@ -14,20 +25,27 @@ $(document).ready(function(){
 
     //console.log(displayStorage);
 
-    if (num=='Clear'){
-      displayStorage='';
-      inputs=[];
-      operArr=[];
-      console.log(inputs)
-      document.getElementById('display').innerHTML=""
-    }
-    if (num=='+' || num=='-'|| num=='*' || num=='/'){
 
-        $('#status').hide();
+    if (num=='.'){
+      decimalCounter++;
+    }
+    if (decimalCounter >1){
+        document.getElementById('display').innerHTML="error";
+        //$('#decimal').off('click',console.log("stop"));
+        //document.getElementById('card').disabled=true;
+        $('.card').attr('disabled', true);
+        console.log('No more than two decimals places');
+      }
+      if ($('.card').attr('disabled')){
+        console.log("STOPPP")
+      }else if (num=='+' || num=='-'|| num=='*' || num=='/'){
+
+
 
       operArr.push(displayStorage[displayStorage.length-1]);
       inputs.push(parseFloat(displayStorage.slice(0,-1)))
       displayStorage=''
+      decimalCounter=0;
       //console.log(inputs);
       //console.log(operArr)
       document.getElementById('display').innerHTML="";
@@ -89,77 +107,8 @@ $(document).ready(function(){
 
 
 
-    /*
-    if(num=='='&& add>=1){
-      inputs.push(parseFloat(displayStorage.slice(0,-1)))
-      console.log(inputs)
-      document.getElementById('display').innerHTML=inputs.reduce(function(total,num){
-        return total+num;
-      }).toFixed(4)
-      //inputs=[];
-    }
-    else if(num=='='&& subtract>=1){
-      inputs.push(parseFloat(displayStorage.slice(0,-1)))
-      console.log(inputs)
-      document.getElementById('display').innerHTML=inputs.reduce(function(total,num){
-        return total-num;
-      }).toFixed(4)
-      //inputs=[];
-    }
-    else if(num=='='&& multi>=1){
-      inputs.push(parseFloat(displayStorage.slice(0,-1)))
-      console.log(inputs)
-      document.getElementById('display').innerHTML=inputs.reduce(function(total,num){
-        return total*num;
-      }).toFixed(4)
-      //inputs=[];
-    }
-    else if (num=='='&& divide>=1){
 
-        inputs.push(parseFloat(displayStorage.slice(0,-1)))
-        console.log(inputs)
-        document.getElementById('display').innerHTML=inputs.reduce(function(total,num){
-          return total/num;
-        }).toFixed(4)
-        //inputs=[];
-
-    }
-  })*/
 
 
 })
 })
-function validateNumber(number) {
-  return (typeof parseFloat(number)==='number');
-}
-
-function add(number1,number2){
-  return number1+number2;
-
-}
-
-function subtract(number1,number2){
-  return number1-number2;
-}
-
-function multiple(number1,number2){
-  return number1*number2;
-}
-
-function divide(number1,number2){
-
-    if (number2==0){
-      return "ERROR!!"
-      } else{
-          return number1/number2
-      }
-
-  }
-
-/*
-console.log(add([1,2,5,10]).toFixed(4));
-console.log(subtract([10,2,2]).toFixed(4));
-console.log(multiple([10,10,10]).toFixed(4));
-console.log(divide([10,2,2]).toFixed(4*/
-
-console.log(validateNumber('1.00'));

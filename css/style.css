@@ -4,6 +4,9 @@
 html, body, main{
   font-family:monospace
 }
+header{
+  text-align: center;
+}
 .grid-container {
   display: grid;
   justify-content: center;
@@ -13,6 +16,7 @@ html, body, main{
 table{
   background-color: #d7d7e2;
   padding: 50px;
+  border-radius: 5%;
 }
 th {
   height:75px;
@@ -22,7 +26,7 @@ td {
 
 }
 
-.card {
+.clear-card, .card {
   color: #000;
   background-color: #b7b2b2;
   text-align: center;
@@ -30,6 +34,7 @@ td {
   padding:25px;
   cursor:pointer;
   border: 4px solid #001;
+  border-radius: 5%;
   font-weight:900;
   font-size:3rem;
 
