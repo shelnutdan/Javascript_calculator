@@ -37,9 +37,7 @@ $(document).ready(function(){
           decimalCounter=0;
         }
       }
-      else if(input=="+/-"){
-        displayValue.value=0-displayValue.value
-      }
+    
       else if(input=='.'){
         inputArray=[];
         zeroInput.disabled = false;
